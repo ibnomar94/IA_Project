@@ -7,19 +7,24 @@ and open the template in the editor.
 <html>
     <head>
         <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="formscss.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     </head>
     <body>
         <h2 align="center">Welcome to Library home page!</h2>
-            <div align="left">
+            
                 <h3>   <b> Sign in!</b> </h3>
+                <div>
                 <form>
                     <label> User Name: </label>  <input type="text" name="username" required > 
-                    <label> Password: </label>  <input type="password" name="password" required ><br>
+                    <label> Password: </label>  <input type="password" name="password" required >
                     <input type="submit" value="Login"> 
                 </form>
-                <button  onclick="location.href='newuser.jsp'" class="btn" type="submit">New User</button>
-            </div>
+                    
+                <div align="center"><button  onclick="location.href='newuser.jsp'" class="btn" type="submit">New User</button>
+                </div>
+                
+                </div>
         </body>
 </html>
