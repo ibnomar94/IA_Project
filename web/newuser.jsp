@@ -16,7 +16,7 @@
     <body>
         <div>
         <form action="adduserservlet" align="center">
-                    <label> ID: </label>  <input type="text" name="id" pattern="201.+[0-9]{8}" title="8 digits Starting with 201" required >
+                    <label> ID: </label>  <input type="text" name="id" pattern="[0-9]{8}" title="8 digits Starting with 201" required >
                     <label> Name: </label>  <input type="text" name="name" required >
                     <label> User Name: </label>  <input type="text" name="username" required > 
                     <label> Password: </label>  <input type="password" name="password" required >

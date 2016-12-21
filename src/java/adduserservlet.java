@@ -63,6 +63,7 @@ public class adduserservlet extends HttpServlet {
                if(check!=0){
                String msg="Record has been inserted";
                out.println("<font size='6' color=blue>" + msg + "</font>");
+               response.sendRedirect("index.html");
                
             }
             }
