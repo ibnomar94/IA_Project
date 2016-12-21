@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
@@ -44,8 +47,22 @@ public class signin extends HttpServlet {
             Statement stmt = conn.createStatement();
             String sql;          
             String id = request.getParameter("id");
-            String user_name = request.getParameter("username");                      
-            sql = "SELECT `id`, `name`, `username`, `email`, `password` FROM `student` WHERE id = '"+id+"' and username = '"+user_name+"'";
+            String password = request.getParameter("password");                      
+            sql = "SELECT `id`, `name`, `username`, `email`, `password` FROM `student` WHERE id = '"+id+"' and password = '"+password+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                HttpSession session = request.getSession(true);
+                session.setAttribute("id", id);
+                session.setAttribute("name", rs.getString("name"));
+                session.setAttribute("username", rs.getString("username"));
+                session.setAttribute("email", rs.getString("email"));
+                response.sendRedirect("studentprofile.jsp");             
+            }
+            else {
+                request.setAttribute("msg", "Please Login with right credentials or Signup");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/newuser.jsp");
+                rd.forward(request, response);
+            }
         }
     }
 

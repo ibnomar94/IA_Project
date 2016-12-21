@@ -14,6 +14,13 @@
 
     </head>
     <body>
+        <% 
+            if(request.getAttribute("msg")!=null){
+               %>
+               <b> <p style="color:red;"> <%=request.getAttribute("msg")%> </p </b>
+        <%
+        }%>
+        
         <div>
         <form action="adduserservlet" align="center">
                     <label> ID: </label>  <input type="text" name="id" pattern="[0-9]{8}" title="8 digits Starting with 201" required >
