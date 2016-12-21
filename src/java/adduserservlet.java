@@ -51,9 +51,12 @@ public class adduserservlet extends HttpServlet {
             String user_name = request.getParameter("username");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
-            
-            sql = "INSERT INTO `student`(`id`, `name`, `username`, `email`, `password`) VALUES ('"+id+"','"+name+"','"+user_name+""
-                    + "','"+email+"','"+password+"')";
+            String isadmin = "0" ;
+            if (user_name.startsWith("admin_") ){
+                isadmin="1";
+            }
+            sql = "INSERT INTO `user`(`id`, `name`, `username`, `email`, `password`,`is_admin`) VALUES ('"+id+"','"+name+"','"+user_name+""
+                    + "','"+email+"','"+password+"','"+isadmin+"')";
             int check  ;
             try {
                check = stmt.executeUpdate(sql);

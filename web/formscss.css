@@ -58,3 +58,23 @@ input[type=button], input[type=submit], input[type=reset], button {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

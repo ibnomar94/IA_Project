@@ -1,6 +1,6 @@
 <%-- 
-    Document   : studentprofile
-    Created on : Dec 21, 2016, 11:07:25 PM
+    Document   : adminprofile
+    Created on : Dec 21, 2016, 11:55:52 PM
     Author     : ibnomar
 --%>
 
@@ -13,9 +13,7 @@
         <title><% out.print(session.getAttribute("name"));%>'s profile</title>
     </head>
     <body>
-        <div>
-            <h3>Hello <% out.print(session.getAttribute("name"));%> !</h3>
-            <button  onclick="location.href='index.html'" class="btn" type="submit">Home</button>
-        </div>
+        <h1>Hello <% out.print(session.getAttribute("name"));%>!</h1>
+        <div class="footer"><button  onclick="location.href='index.html'" class="btn" type="submit">Home</button></div>
     </body>
 </html>

@@ -11,7 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add New user</title>
         <link rel="stylesheet" type="text/css" href="formscss.css">
-
     </head>
     <body>
         <% 
@@ -20,7 +19,7 @@
                <b> <p style="color:red;"> <%=request.getAttribute("msg")%> </p </b>
         <%
         }%>
-        
+        <h3>   <b> SignUp!</b> </h3>
         <div>
         <form action="adduserservlet" align="center">
                     <label> ID: </label>  <input type="text" name="id" pattern="[0-9]{8}" title="8 digits Starting with 201" required >
@@ -30,6 +29,7 @@
                     <label> Email </label>  <input type="email" name="email" required >
                     <input type="submit" value="Add User"> 
                 </form>
+            <button  onclick="location.href='index.html'" class="btn" type="submit">Home</button>
         </div>
     </body>
 </html>

@@ -46,17 +46,24 @@ public class signin extends HttpServlet {
             Connection conn = DriverManager.getConnection(DB_URL, username, pass);
             Statement stmt = conn.createStatement();
             String sql;          
-            String id = request.getParameter("id");
+            String user = request.getParameter("username");
             String password = request.getParameter("password");                      
-            sql = "SELECT `id`, `name`, `username`, `email`, `password` FROM `student` WHERE id = '"+id+"' and password = '"+password+"'";
+            sql = "SELECT `id`, `name`, `username`, `email`, `password`,`is_admin` FROM `user` WHERE username = '"+user+"' and password = '"+password+"'";
             ResultSet rs = stmt.executeQuery(sql);
             if(rs.next()){
                 HttpSession session = request.getSession(true);
-                session.setAttribute("id", id);
+                session.setAttribute("id", rs.getString("id"));
                 session.setAttribute("name", rs.getString("name"));
                 session.setAttribute("username", rs.getString("username"));
                 session.setAttribute("email", rs.getString("email"));
-                response.sendRedirect("studentprofile.jsp");             
+                session.setAttribute("is_admin", rs.getString("is_admin"));
+                if("0".equals(rs.getString("is_admin"))){
+                    response.sendRedirect("studentprofile.jsp");
+                }
+                else if("1".equals(rs.getString("is_admin"))){
+                    response.sendRedirect("adminprofile.jsp");
+                }
+                             
             }
             else {
                 request.setAttribute("msg", "Please Login with right credentials or Signup");
