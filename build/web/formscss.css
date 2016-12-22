@@ -7,6 +7,17 @@ and open the template in the editor.
     Created on : Dec 20, 2016, 12:29:21 AM
     Author     : ibnomar
 */
+.container{
+    margin: auto;
+}
+.container input[type=text]{
+    width: 75%;
+    float: left;
+}
+.container input[type=submit]{
+    margin: 10px;
+}
+
 
 input[type=text], select {
     width: 100%;
@@ -47,6 +58,7 @@ div {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    align-self: center;
 }
 
 input[type=button], input[type=submit], input[type=reset], button {
@@ -58,7 +70,13 @@ input[type=button], input[type=submit], input[type=reset], button {
     margin: 4px 2px;
     cursor: pointer;
 }
-
+table{
+  border:1px solid black;
+  align:center ;
+  cellpadding:20px  ;
+  textalign:center;
+}
+ tr:nth-child(even) {background-color: #f2f2f2}
 
 .switch {
   position: relative;

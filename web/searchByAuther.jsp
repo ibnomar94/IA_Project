@@ -1,20 +1,22 @@
 <%-- 
-    Document   : viewAllBooks
-    Created on : Dec 22, 2016, 12:13:38 AM
+    Document   : searchByIsbn
+    Created on : Dec 22, 2016, 8:25:18 PM
     Author     : shaf3i
 --%>
+
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>All books Page</title>
+        <link rel="stylesheet" type="text/css" href="formscss.css">
+        <title>JSP Page</title>
     </head>
     <body>
+      <div class="container">
         <%
             String url = "jdbc:mysql://localhost:3306/ia_library";
             String user = "root";
@@ -23,32 +25,35 @@
             Connection Con = null;
             Statement Stmt = null;
             ResultSet RS = null;
+            String author_name = request.getParameter("author_name");
 
             try {
                 Con = DriverManager.getConnection(url, user, password);
                 Stmt = Con.createStatement();
-                line = "SELECT * FROM book;";
+                line = "SELECT * FROM book where author_name='"+author_name+"';";
                 RS = Stmt.executeQuery(line);
             } catch (Exception cnfe) {
                 System.err.println("Exception: " + cnfe);
             }
            
         %>
-        <table border="1" align="center" cellpadding="20" textalign="center" >
+        <table border="1" align="center" cellpadding="20" textalign="center">
             <tr>
+                
+                <th>author_name</th>
                 <th>book title</th>
                 <th>publishing_year</th>
-                <th>author_name</th>
                 <th>available_copies</th>
-                <th>isbn</th>
+                <th>ISBN</th>
             </tr>
             <%
                 while (RS.next()) { 
             %>
             <tr>
+                
+                <td><%=RS.getString("author_name")%></td>
                 <td><%=RS.getString("title")%></td>
                 <td><%=RS.getString("publishing_year")%></td>
-                <td><%=RS.getString("author_name")%></td>
                 <td><%=RS.getString("available_copies")%></td>
                 <td><%=RS.getString("isbn")%></td> 
             </tr>
@@ -56,5 +61,10 @@
             <% }
             %>
         </table>
+        
+        <form action="searchForBook.jsp"  >
+                <input type="submit" value="back to search" name="btn" />
+        </form>
+      </div>    
     </body>
 </html>
