@@ -4,18 +4,83 @@
     Author     : ibnomar
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="jquery-1.9.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#show").click(function(){
+        $("#content").toggle();
+        $("#show2").toggle();
+        $("#content2").hide();
+    });
+});
+
+$(document).ready(function(){
+    $("#show2").click(function(){
+        $("#content2").toggle();
+        
+    });
+});
+</script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="formscss.css">
         <title><% out.print(session.getAttribute("name"));%>'s profile</title>
     </head>
     <body>
+        <%
+            String username = "root";
+            String pass = "";
+            String JDBC_DRIVER="com.mysql.jdbc.Driver";  
+            String DB_URL="jdbc:mysql://localhost/Ia_library";
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(DB_URL, username, pass);
+            Statement st = conn.createStatement();
+            Statement st2 = conn.createStatement();
+            ResultSet rs ;
+            ResultSet rs2 ;
+            rs = st.executeQuery("SELECT DISTINCT * FROM `book`");
+            String id= session.getAttribute("id").toString();
+            rs2 = st2.executeQuery("SELECT * FROM `book_copy` WHERE `borrower_id` = '"+id+"'");
+            rs2 = st2.executeQuery("SELECT * FROM `book_copy` JOIN book on book_copy.book_id = book.id and book_copy.borrower_id= '"+id+"'");
+            
+            %>
         <div>
             <h3>Hello <% out.print(session.getAttribute("name"));%> !</h3>
-            <button  onclick="location.href='index.html'" class="btn" type="submit">Home</button>
+            <b><p>Please choose a desired action to do</p></b>
+            
+            <button  onclick="location.href='index.html'" class="btn" type="submit">Logout</button>
+            <button   id="show" >Borrow Book</button>
+            
+            <div style = "display: none;" id="content">
+                <form action="borrowbook">
+            Choose a book to borrow  : <select name ="book">
+            <%while(rs.next()){ %>
+            <option value="<%=rs.getString(2)%>"><%=rs.getString(2)%></option>
+                            <%}%>           
+                            </select>
+                            <input type="submit" value="Borrow">
+              </form>
+             </div>
+                            
+            <button   id="show2" >return Book</button>
+            
+            <div style = "display: none;" id="content2">
+                <form action="borrowbook">
+            Choose a book to return  : <select name ="book">
+            <%while(rs2.next()){ %>
+            <option value="<%=rs2.getString(8)%>"><%=rs2.getString(8)%></option>
+                            <%}%>           
+                            </select>
+                            <input type="submit" value="Borrow">
+              </form>
+             </div>
         </div>
     </body>
 </html>
