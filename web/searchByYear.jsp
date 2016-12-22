@@ -59,7 +59,7 @@
             <% }
             %>
         </table>
-        <form action="searchForBook.jsp"  >
+        <form action="searchForBook.jsp">
                 <input type="submit" value="back to search" name="btn" />
         </form>
         </div>
