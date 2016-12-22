@@ -81,6 +81,12 @@ $(document).ready(function(){
                             <input type="submit" value="Borrow">
               </form>
              </div>
+             <form action="viewAllBooks.jsp">
+                <input type="submit" value="viewAllBooks">
+             </form>
         </div>
+                            
+        
+
     </body>
 </html>
