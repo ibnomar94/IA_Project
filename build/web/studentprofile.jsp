@@ -57,9 +57,9 @@ $(function() { // when DOM is ready
             Statement st2 = conn.createStatement();
             ResultSet rs ;
             ResultSet rs2 ;
-            rs = st.executeQuery("SELECT * FROM `book` WHERE `available_copies` >0");
             String id= session.getAttribute("id").toString();
-            rs2 = st2.executeQuery("SELECT * FROM `book_copy` JOIN book on book_copy.book_id = book.id and book_copy.borrower_id= '"+id+"'");
+            rs = st.executeQuery("SELECT DISTINCT DISTINCT * FROM book JOIN book_copy on book.id = book_copy.book_id WHERE book_copy.borrower_id != '"+id+"' and book.available_copies>0 GROUP BY book.id");
+            rs2 = st2.executeQuery("SELECT DISTINCT * FROM `book_copy` JOIN book on book_copy.book_id = book.id and book_copy.borrower_id= '"+id+"' GROUP BY book.id");
             
             %>
         <div style="width:800px; margin:0 auto;">

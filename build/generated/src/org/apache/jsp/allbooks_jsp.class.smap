@@ -1,0 +1,19 @@
+SMAP
+allbooks_jsp.java
+JSP
+*S JSP
+*F
++ 0 allbooks.jsp
+allbooks.jsp
+*L
+5,15:48
+20,10:64
+29,12:74
+41:86,3
+42:89
+43,5:90,3
+48:105
+49:106,3
+50,8:109
+57,4:117
+*E

@@ -74,7 +74,7 @@ public class returnbook extends HttpServlet {
             try {
                check = st.executeUpdate(sql);
                if(check!=0){               
-               response.sendRedirect("adminprofile.jsp");
+               response.sendRedirect("studentprofile.jsp");
                
             }
             }
