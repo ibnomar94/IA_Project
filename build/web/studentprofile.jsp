@@ -72,22 +72,28 @@ $(function() { // when DOM is ready
             <button   id="allbooks" >Show all Books</button>
             
             <div style = "display: none;" id="content">
-                <form action="borrowbook">
-            Choose a book to borrow  : <select name ="book">
-            <%while(rs.next()){ %>
-            <option value="<%=rs.getString(2)%>"><%=rs.getString(2)%></option>
-                            <%}%>           
-                            </select>
-                            <input type="submit" value="Borrow">
+            <form action="borrowbook">
+              Choose a book to borrow  : 
+            <select name ="book">
+                <%
+                    while(rs.next())
+                    {
+                %>
+                        <option value="<%=rs.getString(2)%>"><%=rs.getString(2)%></option>
+                <%
+                    }
+                %>           
+            </select>
+                      <input type="submit" value="Borrow">
               </form>
              </div>
                             
             
             <div style = "display: none;" id="content2">
-                <form action="borrowbook">
-            Choose a book to return  : <select name ="book">
+                <form action="returnbook">
+            Choose a book to return  : <select name ="bookReturn">
             <%while(rs2.next()){ %>
-            <option value="<%=rs2.getString(8)%>"><%=rs2.getString(8)%></option>
+            <option value="<%=rs2.getString(9)%>"><%=rs2.getString(9)%></option>
                             <%}%>           
                             </select>
                             <input type="submit" value="return">
