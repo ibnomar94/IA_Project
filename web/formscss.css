@@ -58,7 +58,6 @@ div {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    align-self: center;
 }
 
 input[type=button], input[type=submit], input[type=reset], button {
@@ -73,26 +72,18 @@ input[type=button], input[type=submit], input[type=reset], button {
 table{
   border:1px solid black;
   align:center ;
-  cellpadding:20px  ;
+  cellpadding:50px  ;
   textalign:center;
 }
- tr:nth-child(even) {background-color: #f2f2f2}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+table td {
+border-left: 1px solid #000;
+border-right: 1px solid #000;
 }
 
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
+table td:first-child {
+border-left: none;
 }
 
-.slider.round:before {
-  border-radius: 50%;
+table td:last-child {
+border-right: none;
 }

@@ -13,14 +13,14 @@
         <link rel="stylesheet" type="text/css" href="formscss.css">
     </head>
     <body>
-        <div>
-            <form action="addNewBookServelt" align="center">
-                        <label> title: </label>  <input type="text" name="title" required >
-                        <label> publishing_year: </label>  <input type="text" name="publishing_year" required >
-                        <label> author_name: </label>  <input type="text" name="author_name" required > 
-                        <label> isbn: </label>  <input type="text" name="isbn" required >
-                        <label> available_copies </label>  <input type="text" name="available_copies" required >
-                        <label> added_by </label>  <input type="text" name="added_by" required >
+        <div style="width:500px; margin:0 auto;">
+            <form action="addbook" align="center">
+                <h3 align="left">Book Details </h3>
+                        <label> Title: </label>  <input type="text" name="title" required >
+                        <label> Publishing Year: </label>  <input type="text" name="publishing_year" required >
+                        <label> Author Name: </label>  <input type="text" name="author_name" required > 
+                        <label> ISBN: </label>  <input type="text" name="isbn" required >
+                        <label> Number of Copies </label>  <input type="text" name="available_copies" required >
                         <input type="submit" value="Add Book"> 
            </form>
         </div>
