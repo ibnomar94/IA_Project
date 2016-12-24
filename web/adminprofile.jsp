@@ -89,7 +89,7 @@ $(function() {
             %>
         <div style="width:800px; margin:0 auto;">
             <h1>Hello <% out.print(session.getAttribute("name"));%>!</h1>
-            <button  onclick="location.href='index.html'" class="btn" type="submit">Logout</button>
+            <button  onclick="location.href='logout'" class="btn" type="submit">Logout</button>
             <button  id="newbook">New Book</button>
             <button  id="edit">Edit book</button>
             <button  id="allbooks" >Show all Books</button>

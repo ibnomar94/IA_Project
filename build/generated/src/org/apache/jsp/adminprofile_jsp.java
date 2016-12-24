@@ -138,7 +138,7 @@ public final class adminprofile_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            <h1>Hello ");
  out.print(session.getAttribute("name"));
       out.write("!</h1>\n");
-      out.write("            <button  onclick=\"location.href='index.html'\" class=\"btn\" type=\"submit\">Logout</button>\n");
+      out.write("            <button  onclick=\"location.href='logout'\" class=\"btn\" type=\"submit\">Logout</button>\n");
       out.write("            <button  id=\"newbook\">New Book</button>\n");
       out.write("            <button  id=\"edit\">Edit book</button>\n");
       out.write("            <button  id=\"allbooks\" >Show all Books</button>\n");

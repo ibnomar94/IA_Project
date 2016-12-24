@@ -132,7 +132,7 @@ public final class studentprofile_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write(" !</h3>\n");
       out.write("            <b><p>Please choose a desired action to do</p></b>\n");
       out.write("            \n");
-      out.write("            <button  onclick=\"location.href='index.html'\" class=\"btn\" type=\"submit\">Logout</button>\n");
+      out.write("            <button  onclick=\"location.href='logout'\" class=\"btn\" type=\"submit\">Logout</button>\n");
       out.write("            <button   id=\"show\" >Borrow Book</button>\n");
       out.write("            <button   id=\"show2\" >return Book</button>\n");
       out.write("            <button   id=\"allbooks\" >Show all Books</button>\n");

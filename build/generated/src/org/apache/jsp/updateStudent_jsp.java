@@ -94,6 +94,9 @@ public final class updateStudent_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                <h3 align=\"left\">Update ");
       out.print(userName );
       out.write("'s Details </h3>\n");
+      out.write("                <input type=\"hidden\" name=\"id\" value=\"");
+      out.print(user_id );
+      out.write("\">\n");
       out.write("                <label> Name: </label>  <input type=\"text\" name=\"name\" value=\"");
       out.print(name );
       out.write("\" required >\n");
@@ -106,7 +109,7 @@ public final class updateStudent_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                <label> Password: </label>  <input type=\"password\" name=\"password\" value=\"");
       out.print(password);
       out.write("\" required > \n");
-      out.write("                <label> Administrator ? </label>  <input type=\"number\" min =\"0\" max=\"1\"name=\"is_admin\" value=\"");
+      out.write("                <label> Administrator ? </label>  <input type=\"number\" min =\"0\" max=\"1\" name=\"is_admin\" value=\"");
       out.print(is_admin);
       out.write("\" required >\n");
       out.write("                <input type=\"submit\" value=\"Update ");

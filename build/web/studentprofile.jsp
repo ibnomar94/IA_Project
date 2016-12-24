@@ -83,7 +83,7 @@ $(function() { // when DOM is ready
             <h3>Hello <% out.print(session.getAttribute("name"));%> !</h3>
             <b><p>Please choose a desired action to do</p></b>
             
-            <button  onclick="location.href='index.html'" class="btn" type="submit">Logout</button>
+            <button  onclick="location.href='logout'" class="btn" type="submit">Logout</button>
             <button   id="show" >Borrow Book</button>
             <button   id="show2" >return Book</button>
             <button   id="allbooks" >Show all Books</button>

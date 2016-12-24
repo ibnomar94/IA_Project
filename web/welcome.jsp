@@ -15,7 +15,18 @@
     </head>
     <body>
         <h2 align="center">Welcome to Library home page!</h2>
-                
+        <%
+        if ((String)session.getAttribute("id")!= null){
+            String is_admin = (String)session.getAttribute("is_admin") ;
+            if (is_admin =="1"){
+                response.sendRedirect("adminprofile.jsp");
+            }
+            else {
+                response.sendRedirect("studentprofile.jsp");
+            }
+        }
+        
+        %>
                 <div  style="width:800px; margin:0 auto;">
                     <h3>   <b> Sign in!</b> </h3>
                     <form action="signin">
