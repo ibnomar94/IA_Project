@@ -19,6 +19,7 @@ $(document).ready(function(){
         $("#content").toggle();
         $("#content2").hide();
         $("#allbooksdiv").hide();
+        $("#showmaildiv").hide();
     });
 });
 
@@ -27,6 +28,7 @@ $(document).ready(function(){
         $("#content2").toggle();
         $("#content").hide();
         $("#allbooksdiv").hide();
+        $("#showmaildiv").hide();
         
     });
 });
@@ -36,6 +38,18 @@ $(function() { // when DOM is ready
         $("#allbooksdiv").toggle().load("allbooks.jsp");
         $("#content2").hide();
         $("#content").hide();
+        $("#showmaildiv").hide();
+        
+        
+    }); 
+});
+
+$(function() { // when DOM is ready
+    $("#showmail").click(function(){ 
+        $("#showmaildiv").toggle().load("showmail.jsp");
+        $("#content2").hide();
+        $("#content").hide();
+        $("#allbooksdiv").hide();
         
         
     }); 
@@ -47,6 +61,9 @@ $(function() { // when DOM is ready
     </head>
     <body>
         <%
+            if(session.getAttribute("id") == null){
+            response.sendRedirect("index.html");
+            }
             String username = "root";
             String pass = "";
             String JDBC_DRIVER="com.mysql.jdbc.Driver";  
@@ -70,6 +87,7 @@ $(function() { // when DOM is ready
             <button   id="show" >Borrow Book</button>
             <button   id="show2" >return Book</button>
             <button   id="allbooks" >Show all Books</button>
+            <button   id="showmail" >Show Inbox </button>
             
             <div style = "display: none;" id="content">
             <form action="borrowbook">
@@ -100,6 +118,7 @@ $(function() { // when DOM is ready
               </form>
              </div>
         <div id="allbooksdiv"></div>
+        <div id="showmaildiv"></div>
         </div>
                             
         <%           

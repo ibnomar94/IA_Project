@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="bookstable.css">
         <title>All Books Page</title>
     </head>
     <body>
@@ -29,7 +30,8 @@
             %>
             <div style="width:150%; margin:0 auto;" >
             <h4>Available books</h4>
-            <table >
+            <input type="text" id="searchinput" onkeyup="search()" placeholder="Search for book.." title="Type in a book's title">
+            <table id="bookstable" >
                 <thead>
                 <th>Title</th>
                 <th>Publishing Year</th>
@@ -54,6 +56,26 @@
 <%           
             conn.close();
             st.close();
-        %>        
+        %>
+
+<script>
+function search() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchinput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("bookstable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>        
     </body>
 </html>

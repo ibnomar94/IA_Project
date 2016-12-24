@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 24, 2016, 7:58:59 PM
+    Author     : ibnomar
+*/
+
+searchinput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#bookstable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#bookstable th, #bookstable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#bookstable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#bookstable tr.header, #bookstable tr:hover {
+  background-color: #f1f1f1;
+}

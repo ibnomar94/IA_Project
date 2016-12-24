@@ -23,6 +23,7 @@ $(function() {
         $("#newbooksdiv").toggle().load("newBook.jsp");
         $("#editbook").hide();
         $("#allbooksdiv").hide();
+        $("#emaildiv").hide();
     }); 
 });
 
@@ -31,6 +32,7 @@ $(function() {
         $("#editbook").toggle();
         $("#newbooksdiv").hide();
         $("#allbooksdiv").hide();
+        $("#emaildiv").hide();
     }); 
 });
 
@@ -39,12 +41,25 @@ $(function() { // when DOM is ready
         $("#allbooksdiv").toggle().load("allbooks.jsp");  
         $("#editbook").hide();
         $("#newbooksdiv").hide();
+        $("#emaildiv").hide();
+    }); 
+});
+
+$(function() { 
+    $("#emailbtn").click(function(){ 
+        $("#emaildiv").toggle().load("email.jsp");
+        $("#editbook").hide();
+        $("#allbooksdiv").hide();
+        $("#newbooksdiv").hide();
     }); 
 });
 </script>
     </head>
     <body>
         <%
+            if(session.getAttribute("id") == null){
+            response.sendRedirect("index.html");
+            }
             String username = "root";
             String pass = "";
             String JDBC_DRIVER="com.mysql.jdbc.Driver";  
@@ -61,6 +76,7 @@ $(function() { // when DOM is ready
             <button  id="newbook">New Book</button>
             <button  id="edit">Edit book</button>
             <button   id="allbooks" >Show all Books</button>
+            <button   id="emailbtn" >Send Email </button>
             
             <div style="display: none;" id="editbook"> 
                 <form action="updatebook.jsp">
@@ -73,7 +89,8 @@ $(function() { // when DOM is ready
                             <input type="submit" value="Edit Details">
                 </form>
             </div>
-        <div id="allbooksdiv"></div>    
+        <div id="allbooksdiv"></div>
+        <div style="width:700px; margin:0 auto;" id="emaildiv"></div> 
         </div>
             <div style="width:800px; margin:0 auto;" id="newbooksdiv"> </div>
             

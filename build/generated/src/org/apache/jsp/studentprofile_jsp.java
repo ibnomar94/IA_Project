@@ -93,6 +93,9 @@ public final class studentprofile_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("    <body>\n");
       out.write("        ");
 
+            if(session.getAttribute("id") == null){
+            response.sendRedirect("index.html");
+            }
             String username = "root";
             String pass = "";
             String JDBC_DRIVER="com.mysql.jdbc.Driver";  
