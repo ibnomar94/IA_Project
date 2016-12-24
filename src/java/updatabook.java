@@ -64,7 +64,7 @@ public class updatabook extends HttpServlet {
             try {
                check = stmt.executeUpdate(sql);
                if(check!=0){               
-               //response.sendRedirect("adminprofile.jsp");
+               response.sendRedirect("adminprofile.jsp");
                
             }
             }

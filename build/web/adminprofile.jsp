@@ -24,6 +24,7 @@ $(function() {
         $("#editbook").hide();
         $("#allbooksdiv").hide();
         $("#emaildiv").hide();
+        $("#updateuserdiv").hide();
     }); 
 });
 
@@ -33,6 +34,7 @@ $(function() {
         $("#newbooksdiv").hide();
         $("#allbooksdiv").hide();
         $("#emaildiv").hide();
+        $("#updateuserdiv").hide();
     }); 
 });
 
@@ -42,6 +44,7 @@ $(function() { // when DOM is ready
         $("#editbook").hide();
         $("#newbooksdiv").hide();
         $("#emaildiv").hide();
+        $("#updateuserdiv").hide();
     }); 
 });
 
@@ -51,6 +54,17 @@ $(function() {
         $("#editbook").hide();
         $("#allbooksdiv").hide();
         $("#newbooksdiv").hide();
+        $("#updateuserdiv").hide();
+    }); 
+});
+
+$(function() { 
+    $("#updateuser").click(function(){ 
+        $("#updateuserdiv").toggle();
+        $("#editbook").hide();
+        $("#allbooksdiv").hide();
+        $("#newbooksdiv").hide();
+        $("#emaildiv").hide();
     }); 
 });
 </script>
@@ -66,17 +80,21 @@ $(function() {
             String DB_URL="jdbc:mysql://localhost/Ia_library";
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, username, pass);
-            Statement st = conn.createStatement();          
+            Statement st = conn.createStatement();
+            Statement st2 = conn.createStatement();
             ResultSet rs ;
-            rs = st.executeQuery("SELECT isbn FROM `book` ");            
+            ResultSet rs2 ;
+            rs = st.executeQuery("SELECT isbn FROM `book` ");
+            rs2 = st2.executeQuery("SELECT * FROM `user` where `is_admin`=0  ");            
             %>
         <div style="width:800px; margin:0 auto;">
             <h1>Hello <% out.print(session.getAttribute("name"));%>!</h1>
             <button  onclick="location.href='index.html'" class="btn" type="submit">Logout</button>
             <button  id="newbook">New Book</button>
             <button  id="edit">Edit book</button>
-            <button   id="allbooks" >Show all Books</button>
-            <button   id="emailbtn" >Send Email </button>
+            <button  id="allbooks" >Show all Books</button>
+            <button  id="emailbtn" >Send Email </button>
+            <button  id="updateuser" >Update a User</button>
             
             <div style="display: none;" id="editbook"> 
                 <form action="updatebook.jsp">
@@ -89,6 +107,19 @@ $(function() {
                             <input type="submit" value="Edit Details">
                 </form>
             </div>
+                        
+            <div style="display: none;" id="updateuserdiv"> 
+                <form action="updateStudent.jsp">
+                    <b>Enter users's ID</b><input name ="id" list="browsers3">
+                        <datalist id="browsers3" >
+                                 <%while(rs2.next()){ %>
+                                    <option value="<%=rs2.getString(1)%>"><%=rs2.getString(1)%></option>
+                                          <%}%>           
+                        </datalist>
+                            <input type="submit" value="Edit Details">
+                </form>
+            </div>            
+                        
         <div id="allbooksdiv"></div>
         <div style="width:700px; margin:0 auto;" id="emaildiv"></div> 
         </div>
@@ -97,6 +128,7 @@ $(function() {
  <%           
             conn.close();
             st.close();
+            st2.close();
         %>           
     </body>
 </html>

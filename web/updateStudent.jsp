@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="formscss.css">
         <script src="jquery-1.9.1.min.js"></script>
-        <title>student edit details page</title>
+        <title>Edit User</title>
     </head>
     <body>
         <%
@@ -27,30 +27,32 @@
             Statement st = conn.createStatement();           
             ResultSet resultset ;
             //String email = request.getParameter("email");
-            String email="me@me";
-            resultset = st.executeQuery("SELECT * FROM `user` WHERE `email` = '"+email+"'");
-            String id = "";
+            String user_id=request.getParameter("id");
+            resultset = st.executeQuery("SELECT * FROM `user` WHERE `id` = '"+user_id+"'");
             String userName = "";
             String password="" ;
             String is_admin="" ;
+            String name = "" ;
+            String email = "" ;
             while (resultset.next()){
-             id =resultset.getString(1);
+             name = resultset.getString(2);
              userName = resultset.getString(3);
+             email = resultset.getString(4);
              password = resultset.getString(5);
-             is_admin = resultset.getString(6);
-             //Numofcopies = resultset.getString(6);
+             is_admin = resultset.getString(6);           
             }
             
             %>
         
         <div style="width:500px; margin:0 auto;">
             <form action="updateStudent" align="center">
-                <h3 align="left">user <%=userName %>'s Details </h3>
-                <label> ID: </label>  <input type="text" name="id" value="<%=id %>" required >
-                <label> UserName: </label>  <input type="text" name="userName" value="<%=userName %>" required >
-                <label> email: </label>  <input type="text" name="email" value="<%=email%>" required >
-                <label> password: </label>  <input type="password" name="password" value="<%=password%>" required > 
-                <label> is_admin: </label>  <input type="text" name="is_admin" value="<%=is_admin%>" required >
+                <h3 align="left">Update <%=userName %>'s Details </h3>
+                <input type="hidden" name="id" value="<%=user_id %>">
+                <label> Name: </label>  <input type="text" name="name" value="<%=name %>" required >
+                <label> User Name: </label>  <input type="text" name="userName" value="<%=userName %>" required >
+                <label> Email: </label>  <input type="text" name="email" value="<%=email%>" required >
+                <label> Password: </label>  <input type="password" name="password" value="<%=password%>" required > 
+                <label> Administrator ? </label>  <input type="number" min ="0" max="1" name="is_admin" value="<%=is_admin%>" required >
                 <input type="submit" value="Update <%=userName %>'s details"> 
            </form>
         <button  onclick="location.href='adminprofile.jsp'" class="btn" type="submit">Home</button>

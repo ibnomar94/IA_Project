@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class newuser_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -47,35 +47,27 @@ public final class newuser_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Add New user</title>\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"formscss.css\">\n");
+      out.write("        <meta charset=\"UTF-8\">\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">          \n");
+      out.write("        <title>welcome Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        ");
- 
-            if(request.getAttribute("msg")!=null){
-               
-      out.write("\n");
-      out.write("               <b> <p style=\"color:red;\"> ");
-      out.print(request.getAttribute("msg"));
-      out.write(" </p </b>\n");
-      out.write("        ");
-
-        }
-      out.write("\n");
-      out.write("        <h3>   <b> SignUp!</b> </h3>\n");
-      out.write("        <div>\n");
-      out.write("        <form action=\"adduserservlet\" align=\"center\">\n");
-      out.write("                    <label> ID: </label>  <input type=\"text\" name=\"id\" pattern=\"[0-9]{8}\" title=\"8 digits Starting with 201\" required >\n");
-      out.write("                    <label> Name: </label>  <input type=\"text\" name=\"name\" required >\n");
-      out.write("                    <label> User Name: </label>  <input type=\"text\" name=\"username\" required > \n");
+      out.write("        <h2 align=\"center\">Welcome to Library home page!</h2>\n");
+      out.write("                \n");
+      out.write("                <div  style=\"width:800px; margin:0 auto;\">\n");
+      out.write("                    <h3>   <b> Sign in!</b> </h3>\n");
+      out.write("                    <form action=\"signin\">\n");
+      out.write("                    <label> User Name </label>  <input type=\"text\" name=\"username\" required > \n");
       out.write("                    <label> Password: </label>  <input type=\"password\" name=\"password\" required >\n");
-      out.write("                    <label> Email </label>  <input type=\"email\" name=\"email\" required >\n");
-      out.write("                    <input type=\"submit\" value=\"Add User\"> \n");
+      out.write("                    <input type=\"submit\" value=\"Login\"> \n");
       out.write("                </form>\n");
-      out.write("            <button  onclick=\"location.href='index.html'\" class=\"btn\" type=\"submit\">Home</button>\n");
-      out.write("        </div>\n");
+      out.write("                    \n");
+      out.write("                <div>\n");
+      out.write("                <button style=\"float: right\" onclick=\"location.href='newuser.jsp'\" class=\"btn\" type=\"submit\">New User</button>\n");
+      out.write("                </div>\n");
+      out.write("                \n");
+      out.write("                </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

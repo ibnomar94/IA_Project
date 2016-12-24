@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 
-public final class email_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class showmail_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -57,7 +57,7 @@ public final class email_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"formscss.css\">\n");
-      out.write("        <title>Email Page</title>\n");
+      out.write("        <title>mail showing Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
@@ -69,36 +69,45 @@ public final class email_jsp extends org.apache.jasper.runtime.HttpJspBase
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, username, pass);
             Statement st = conn.createStatement();          
-            ResultSet rs5 ;
-            rs5 = st.executeQuery("SELECT * FROM `user` where `is_admin`= 0 ");            
+            ResultSet rs ;
+            String id = (String) session.getAttribute("id");
+            rs = st.executeQuery("SELECT * FROM `messaging` JOIN user ON messaging.sender_id=user.id and  reciever_id = '"+id+"' ");            
             
       out.write("\n");
       out.write("        <div>\n");
-      out.write("        <h3>Send Email</h3>\n");
-      out.write("        <form action=\"email\">\n");
-      out.write("           Send email To user with ID:<input type=\"text\" name =\"emailto\" list=\"browsers2\">\n");
-      out.write("                        <datalist id=\"browsers2\" >\n");
-      out.write("                                 ");
-while(rs5.next()){ 
+      out.write("            <h4> Inbox</h4>\n");
+      out.write("            ");
+if(!rs.isBeforeFirst()) {
+                
       out.write("\n");
-      out.write("                                    <option value=\"");
-      out.print(rs5.getString(1));
-      out.write('"');
-      out.write('>');
-      out.print(rs5.getString(1));
-      out.write("</option>\n");
+      out.write("                <font color=\"red\"> <b><h4> Your Inbox is empty </h4></b> </font>\n");
+      out.write("                ");
+
+            }
+                
+      out.write("\n");
+      out.write("            ");
+while(rs.next()){ 
+      out.write("\n");
+      out.write("            From : <b> ");
+ out.print(rs.getString(7)); 
+      out.write(" </b> <br>\n");
+      out.write("            Subject : <b> ");
+ out.print(rs.getString(4)); 
+      out.write(" </b> <br>\n");
+      out.write("            -------------------------------\n");
+      out.write("            <p> <b>Body :</b> ");
+ out.print(rs.getString(5)); 
+      out.write(" </p><br>\n");
+      out.write("            ===========================================\n");
       out.write("                                          ");
 }
-      out.write("           \n");
-      out.write("                        </datalist><br>\n");
-      out.write("           Subject : <input type=\"text\" name=\"subject\"><br>\n");
-      out.write("           Message : <textarea name=\"message\"></textarea><br>\n");
-      out.write("           <input type=\"hidden\" name=\"type\" value=\"send\" >\n");
-      out.write("           <input type=\"submit\" value=\"Send\">\n");
-      out.write("        </form>\n");
+      out.write(" \n");
+      out.write("            \n");
       out.write("        </div>\n");
-      out.write("                        \n");
-      out.write("     ");
+      out.write("                                          \n");
+      out.write("                                          \n");
+      out.write("        ");
            
             conn.close();
             st.close();

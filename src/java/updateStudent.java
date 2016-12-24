@@ -40,25 +40,24 @@ public class updateStudent extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true);
             String username = "root";
             String pass = "";
             String JDBC_DRIVER="com.mysql.jdbc.Driver";  
-            String DB_URL="jdbc:mysql://localhost/ia_library";
+            String DB_URL="jdbc:mysql://localhost/Ia_library";
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, username, pass);
             Statement stmt = conn.createStatement();
             String sql;
             
             String id= request.getParameter("id");
+            String name = request.getParameter("name");
             String userName = request.getParameter("userName");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String is_admin = request.getParameter("is_admin");
             
-            sql = "UPDATE `user` SET `username`='"+userName+"',`email`='"+email+"',"
-                    + "`password`='"+password+"',`is_admin`='"+is_admin+"'"                    
-                    + "WHERE id ='"+id+"'";            
+            sql = "UPDATE `user` SET `name`='"+name+"', `username`='"+userName+"',`email`='"+email+"',"
+                    + "`password`='"+password+"',`is_admin`='"+is_admin+"' WHERE id ='"+id+"'";            
             int check  ;
             try {
                check = stmt.executeUpdate(sql);

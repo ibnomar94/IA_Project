@@ -62,6 +62,7 @@ public final class studentprofile_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        $(\"#content\").toggle();\n");
       out.write("        $(\"#content2\").hide();\n");
       out.write("        $(\"#allbooksdiv\").hide();\n");
+      out.write("        $(\"#showmaildiv\").hide();\n");
       out.write("    });\n");
       out.write("});\n");
       out.write("\n");
@@ -70,6 +71,7 @@ public final class studentprofile_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        $(\"#content2\").toggle();\n");
       out.write("        $(\"#content\").hide();\n");
       out.write("        $(\"#allbooksdiv\").hide();\n");
+      out.write("        $(\"#showmaildiv\").hide();\n");
       out.write("        \n");
       out.write("    });\n");
       out.write("});\n");
@@ -79,6 +81,18 @@ public final class studentprofile_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        $(\"#allbooksdiv\").toggle().load(\"allbooks.jsp\");\n");
       out.write("        $(\"#content2\").hide();\n");
       out.write("        $(\"#content\").hide();\n");
+      out.write("        $(\"#showmaildiv\").hide();\n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("    }); \n");
+      out.write("});\n");
+      out.write("\n");
+      out.write("$(function() { // when DOM is ready\n");
+      out.write("    $(\"#showmail\").click(function(){ \n");
+      out.write("        $(\"#showmaildiv\").toggle().load(\"showmail.jsp\");\n");
+      out.write("        $(\"#content2\").hide();\n");
+      out.write("        $(\"#content\").hide();\n");
+      out.write("        $(\"#allbooksdiv\").hide();\n");
       out.write("        \n");
       out.write("        \n");
       out.write("    }); \n");
@@ -122,6 +136,7 @@ public final class studentprofile_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("            <button   id=\"show\" >Borrow Book</button>\n");
       out.write("            <button   id=\"show2\" >return Book</button>\n");
       out.write("            <button   id=\"allbooks\" >Show all Books</button>\n");
+      out.write("            <button   id=\"showmail\" >Show Inbox </button>\n");
       out.write("            \n");
       out.write("            <div style = \"display: none;\" id=\"content\">\n");
       out.write("            <form action=\"borrowbook\">\n");
@@ -170,6 +185,7 @@ while(rs2.next()){
       out.write("              </form>\n");
       out.write("             </div>\n");
       out.write("        <div id=\"allbooksdiv\"></div>\n");
+      out.write("        <div id=\"showmaildiv\"></div>\n");
       out.write("        </div>\n");
       out.write("                            \n");
       out.write("        ");
