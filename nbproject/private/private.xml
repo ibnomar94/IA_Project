@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ibnomar/NetBeansProjects/iaproject/web/index.html</file>
-            <file>file:/home/ibnomar/NetBeansProjects/iaproject/src/java/borrowbook.java</file>
-            <file>file:/home/ibnomar/NetBeansProjects/iaproject/src/java/returnbook.java</file>
-            <file>file:/home/ibnomar/NetBeansProjects/iaproject/web/studentprofile.jsp</file>
+            <file>file:/C:/Users/shaf3i/Documents/NetBeansProjects/ia_projectgit/IA_Project/web/updatebook.jsp</file>
+            <file>file:/C:/Users/shaf3i/Documents/NetBeansProjects/ia_projectgit/IA_Project/src/java/updatabook.java</file>
+            <file>file:/C:/Users/shaf3i/Documents/NetBeansProjects/ia_projectgit/IA_Project/src/java/updateStudent.java</file>
+            <file>file:/C:/Users/shaf3i/Documents/NetBeansProjects/ia_projectgit/IA_Project/web/updateStudent.jsp</file>
+            <file>file:/C:/Users/shaf3i/Documents/NetBeansProjects/ia_projectgit/IA_Project/src/java/borrowbook.java</file>
+            <file>file:/C:/Users/shaf3i/Documents/NetBeansProjects/ia_projectgit/IA_Project/web/studentprofile.jsp</file>
         </group>
     </open-files>
 </project-private>
